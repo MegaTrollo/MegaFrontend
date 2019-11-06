@@ -3,14 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestComponentComponent } from './components/test-component/test-component.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ListOfBoardsComponent } from './components/list-of-boards/list-of-boards.component';
+import { BoardComponent } from './components/board/board.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponentComponent
+    NavbarComponent,
+    ListOfBoardsComponent,
+    BoardComponent,
   ],
   imports: [
     BrowserModule,
