@@ -19,4 +19,12 @@ export class ListofBoardsService {
     return this.http.post(`${environment.localhostBackendUrl}/api/table/add`, newBoard);
   }
 
+  getBoardById(boardId: string) {
+    return this.http.get<Board>(`${environment.localhostBackendUrl}/api/table/` + boardId);
+  }
+
+  changeBoardNameById(boardId: string, newBoardName: string) {
+    return this.http.post(`${environment.localhostBackendUrl}/api/table/rename/${boardId}/${newBoardName}`, null);
+  }
+
 }

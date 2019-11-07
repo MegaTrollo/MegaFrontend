@@ -1,0 +1,133 @@
+.board-header {
+  height: auto;
+  padding: 8px 4px 4px 8px;
+  position: relative;
+  transition: padding .1s ease-in;
+}
+
+.board-name-input {
+  display: inline;
+  background-color: #ebecf0;
+  border: 0;
+  font-weight: 700;
+  font-size: 18px;
+  height: 32px;
+  margin: 0;
+  padding: 0 12px;
+}
+
+.board-canvas {
+  background: linear-gradient(180deg, hsla(0, 0%, 100%, .24) 0, hsla(0, 0%, 100%, .24) 48px, hsla(0, 0%, 100%, 0) 80px, hsla(0, 0%, 100%, 0));
+}
+.board-canvas {
+  position: relative;
+  flex-grow: 1;
+}
+
+#board {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  margin-bottom: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.u-fancy-scrollbar {
+  -webkit-overflow-scrolling: touch;
+  /* -webkit-transform: translateZ(0); */
+}
+.list-wrapper:first-child {
+  margin-left: 8px;
+}
+
+.list-wrapper {
+  width: 275px;
+  margin: 0 4px;
+  height: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.list {
+  background-color: #ebecf0;
+  border-radius: 3px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  position: relative;
+  white-space: normal;
+}
+
+.list-header {
+  flex: 0 0 auto;
+  padding: 10px 8px;
+  position: relative;
+  min-height: 20px;
+}
+
+.list-header textarea {
+  resize: none;
+}
+
+textarea.mod-list-name {
+  background: transparent;
+  border-radius: 3px;
+  box-shadow: none;
+  font-weight: 600;
+  margin: -4px 0;
+  height: 20px;
+  min-height: 20px;
+  padding: 4px 8px;
+  resize: none;
+  max-height: 256px;
+}
+
+.list-cards {
+  flex: 1 1 auto;
+  margin-bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 4px;
+  padding: 0 4px;
+  z-index: 1;
+  min-height: 0;
+}
+.card-composer-container {
+  min-height: 38px;
+  max-height: 38px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.open-card-composer.card-templates-enabled {
+  border-radius: 3px;
+  flex-grow: 1;
+  margin: 2px 0 8px 8px;
+  padding: 4px 8px;
+}
+
+.open-card-composer {
+  border-radius: 0 0 3px 3px;
+  color: #5e6c84;
+  display: block;
+  flex: 0 0 auto;
+  padding: 8px;
+  position: relative;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

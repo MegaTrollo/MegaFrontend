@@ -2,7 +2,7 @@
   <h2>Tablice:</h2>
 
   <div class="boards">
-    <div *ngFor="let board of allBoards" class="one-board">
+    <div routerLink="/board/{{board.id}}" *ngFor="let board of allBoards" class="one-board">
       <div class="board-name">{{board.name}}</div>
     </div>
     <div class="create-board" data-toggle="modal" data-target="#createBoardModal"><p>Utwórz nową tablicę</p></div>
@@ -11,7 +11,8 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="createBoardModal" tabindex="-1" role="dialog" aria-labelledby="createBoardModalLabel" aria-hidden="true">
+<div class="modal fade" id="createBoardModal" tabindex="-1" role="dialog" aria-labelledby="createBoardModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -25,7 +26,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-        <button type="button" class="btn btn-primary" (click)="createTable(boardName.value)">Utwórz tablicę!</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createTable(boardName.value)">Utwórz
+          tablicę!
+        </button>
       </div>
     </div>
   </div>
