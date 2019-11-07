@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Board} from '../../models/Board';
 import {ListofBoardsService} from '../../services/listof-boards.service';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-of-boards',
@@ -12,7 +13,7 @@ export class ListOfBoardsComponent implements OnInit {
   allBoards: Board[];
   newBoard: Board;
 
-  constructor(private listofBoardsService: ListofBoardsService, private router: Router) {
+  constructor(private listofBoardsService: ListofBoardsService, private router: Router, private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -24,11 +25,11 @@ export class ListOfBoardsComponent implements OnInit {
   }
 
   createTable(boardName: string) {
-    console.log(boardName);
     this.newBoard = new Board();
     this.newBoard.name = boardName;
     this.listofBoardsService.createNewBoard(this.newBoard).subscribe(value => {
-      // this.router.navigate(['list-of-boards']); // TODO: DO ZMIANY NA NOWY KOMPONENT TABLICY
+    this.toastr.success('Utworzono nową tablicę!');
+    this.ngOnInit();
     }, error1 => {
       console.log(error1.error.message);
     });

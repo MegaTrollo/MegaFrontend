@@ -1,32 +1,37 @@
-.component-content{
+.component-content {
   width: 50%;
   margin: 2rem auto;
 }
 
-.boards{
+.boards {
   width: 70rem;
 }
 
-.create-board{
+/******************************************/
+
+.create-board {
   width: 12rem;
   height: 6rem;
   margin: 0.5rem;
   border: 1px solid lightgrey;
   border-radius: 0.5rem;
   background-color: #f1f1f1;
-  display: flex;
+  display: inline-block;
   cursor: pointer;
 }
 
-.create-board:hover{
+.create-board:hover {
   background-color: #eaeaea;
 }
 
 .create-board p {
-  margin: auto;
+  padding-top: 0.5rem;
+  text-align: center;
 }
 
-.one-board{
+/******************************************/
+
+.one-board {
   width: 12rem;
   height: 6rem;
   margin: 0.5rem;
@@ -37,6 +42,6 @@
   background-color: lightcyan;
 }
 
-.board-name{
+.one-board .board-name {
   padding: 0.5rem;
 }

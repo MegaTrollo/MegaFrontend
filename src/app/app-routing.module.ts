@@ -5,7 +5,7 @@ import {BoardComponent} from './components/board/board.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', redirectTo: 'list-of-boards', pathMatch: 'full'},
   {path: 'list-of-boards', component: ListOfBoardsComponent},
   {path: 'board/:id', component: BoardComponent}
 ];
