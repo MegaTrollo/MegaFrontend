@@ -11,7 +11,8 @@ import {BoardComponent} from './components/board/board.component';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpHeaderInterceptor} from './HttpHeaderInterceptor';
-import { LoginAndRegisterAccountComponent } from './components/login-and-register-account/login-and-register-account.component';
+import {LoginAndRegisterAccountComponent} from './components/login-and-register-account/login-and-register-account.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,8 @@ import { LoginAndRegisterAccountComponent } from './components/login-and-registe
     RouterModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       timeOut: 2500,
       progressBar: true

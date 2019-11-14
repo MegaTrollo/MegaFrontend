@@ -2,33 +2,41 @@
 
   <form class="form-container">
     <h3 class="form-header">Zaloguj się</h3>
-    <div>
+    <div [formGroup]="loginForm" *ngIf="loginForm">
       <div class="form-group">
-        <label for="loginEmail">Podaj email</label>
-        <input type="text" class="form-control" id="loginEmail" placeholder="Email...">
+        <label for="loginEmail">Email</label>
+        <input type="text" class="form-control" formControlName="loginEmail" id="loginEmail" placeholder="Podaj email...">
       </div>
       <div class="form-group">
-        <label for="loginPassword">Podaj hasło</label>
-        <input type="password" class="form-control" id="loginPassword" placeholder="Hasło...">
+        <label for="loginPassword">Hasło</label>
+        <input type="password" class="form-control" formControlName="loginPassword" id="loginPassword" placeholder="Podaj hasło...">
       </div>
     </div>
-    <button style="float:right; margin-right: 0.5rem" type="button" class="btn btn-primary" (click)="logIn()">Zaloguj
+    <button style="margin: 0 0.1rem" type="button" class="btn btn-primary" (click)="logIn()">Zaloguj
     </button>
   </form>
 
   <form class="form-container">
     <h3 class="form-header">Zarejestruj się</h3>
-    <div>
+    <div [formGroup]="registerForm" *ngIf="registerForm">
       <div class="form-group">
-        <label for="email">Podaj email</label>
-        <input type="text" class="form-control" id="email" placeholder="Email...">
+        <label for="firstName">Imię</label>
+        <input type="text" class="form-control" formControlName="firstName" id="firstName" placeholder="Podaj imię...">
       </div>
       <div class="form-group">
-        <label for="password">Podaj hasło</label>
-        <input type="password" class="form-control" id="password" placeholder="Hasło...">
+        <label for="lastName">Nazwisko</label>
+        <input type="text" class="form-control" formControlName="lastName" id="lastName" placeholder="Podaj nazwisko...">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" formControlName="email" id="email" placeholder="Podaj email...">
+      </div>
+      <div class="form-group">
+        <label for="password">Hasło</label>
+        <input type="password" class="form-control" formControlName="password" id="password" placeholder="Podaj hasło...">
       </div>
     </div>
-    <button style="float:right; margin-right: 0.5rem" type="button" class="btn btn-primary" (click)="registerAccount()">
+    <button style="margin: 0 0.1rem" type="button" class="btn btn-primary" (click)="registerAccount()">
       Stwórz konto
     </button>
   </form>

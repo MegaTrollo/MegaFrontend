@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Board} from '../models/Board';
 import {environment} from '../../environments/environment';
 import {CardList} from '../models/CardList';
 
