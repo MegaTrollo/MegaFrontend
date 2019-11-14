@@ -1,14 +1,21 @@
 <nav class="navbar text-white bg-primary">
+
   <a class="navbar-nav">
-    <a style="color:white" routerLink="/list-of-boards"> Tablice </a>
+    <a style="color:white; cursor: pointer" routerLink="/list-of-boards"> Tablice </a>
   </a>
+
   <div>
     <img src="../../../assets/logo.png" width="40" height="40" alt="">
     MegaTrollo
   </div>
+
   <div id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item text-white active">
+      <li *ngIf="jwtToken == null" class="nav-item text-white active" style="cursor: pointer" routerLink="/login-register-account">
+        Zarejestruj się / Zaloguj się
+      </li>
+      <li *ngIf="jwtToken != null" class="nav-item text-white active" style="cursor: pointer;" (click)="logout()">
+        Wyloguj się
       </li>
     </ul>
   </div>

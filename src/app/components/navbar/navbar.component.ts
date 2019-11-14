@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  jwtToken = sessionStorage.getItem('jwtToken');
   constructor() { }
 
   ngOnInit() {
   }
 
+  logout() {
+    sessionStorage.clear();
+  }
 }
