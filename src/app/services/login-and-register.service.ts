@@ -11,10 +11,10 @@ export class LoginAndRegisterService {
   constructor(private http: HttpClient) { }
 
   login(loginModel: LoginOrRegisterAccountModel) {
-    return this.http.post(`${environment.localhostBackendUrl}/api/signup`, loginModel);
+    return this.http.post(`${environment.localhostBackendUrl}/api/auth/signin`, loginModel);
   }
 
   registerAccount(registerAccountModel: LoginOrRegisterAccountModel) {
-    return this.http.post(`${environment.localhostBackendUrl}/api/signin`, registerAccountModel);
+    return this.http.post(`${environment.localhostBackendUrl}/api/auth/signup`, registerAccountModel);
   }
 }
