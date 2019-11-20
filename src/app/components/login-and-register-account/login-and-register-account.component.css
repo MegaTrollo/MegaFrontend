@@ -1,0 +1,9 @@
+.form-container {
+  display: inline-grid;
+  width: 42%;
+  margin: 4%;
+}
+
+.form-header {
+  text-align: center;
+}

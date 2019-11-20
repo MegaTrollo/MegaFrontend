@@ -1,2 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
 @import '~ngx-toastr/toastr';
+
+@media (min-width: 992px) {
+  .component-content {
+    width: 50%;
+    margin: 2rem auto;
+  }
+}
+
+@media (max-width: 992px) {
+  .component-content {
+    width: 90%;
+    margin: 2rem auto;
+  }
+}
