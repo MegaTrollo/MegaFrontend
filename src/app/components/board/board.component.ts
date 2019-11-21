@@ -35,6 +35,9 @@ export class BoardComponent implements OnInit {
   newListOfCardsNameForm = new FormGroup({
     newListOfCardsName: new FormControl('')
   });
+  newCardForm = new FormGroup({
+    newCardName: new FormControl('')
+  });
 
 
   ngOnInit() {
@@ -85,6 +88,30 @@ export class BoardComponent implements OnInit {
       this.toastr.success('Utworzono nową tablicę!');
       this.ngOnInit();
       this.newListOfCardsNameForm.reset();
+    });
+  }
+
+  addNewCardToCardListById(cardListId: number) {
+    let tempCard = new Card();
+    tempCard.name = this.newCardForm.value.newCardName;
+    this.listOfCardsService.addCardByCardListId(cardListId, tempCard ).subscribe(value => {
+      this.toastr.success('Dodano nową kartę');
+      this.ngOnInit();
+      this.newCardForm.reset();
+    });
+  }
+
+  showCardDetails(cardId: any) {
+    console.log('Show details: ' + cardId);
+  }
+
+  deleteCardById(cardId: any) {
+    console.log('DeleteCard: ' + cardId);
+
+    this.listOfCardsService.deleteCardByCardId(cardId).subscribe(value => {
+      this.toastr.success('Usunięto kartę');
+      this.ngOnInit();
+      this.newCardForm.reset();
     });
   }
 }

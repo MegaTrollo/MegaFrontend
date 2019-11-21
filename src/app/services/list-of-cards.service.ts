@@ -13,4 +13,13 @@ export class ListOfCardsService {
   getAllCardsByCardListId(cardListId: number) {
     return this.http.get<Card[]>(`${environment.localhostBackendUrl}/api/card/getAllCardByCardListId/` + cardListId);
   }
+
+  addCardByCardListId(cardListId: number, cardToAdd: Card) {
+    return this.http.post(`${environment.localhostBackendUrl}/api/card/addCard/` + cardListId, cardToAdd);
+  }
+
+
+  deleteCardByCardId(cardId: any) {
+    return this.http.delete(`${environment.localhostBackendUrl}/api/card/deleteCard/` + cardId);
+  }
 }

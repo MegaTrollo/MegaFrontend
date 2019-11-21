@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="board-canvas">
-  <div id="board" class="u-fancy-scrollbar">
+  <div id="board" class="u-fancy-scrollbar-main">
     <!--  tu się zaczynają listy-->
     <div class="list-wrapper" *ngFor="let cardList of allCardLists">
       <div class="list">
@@ -13,17 +13,30 @@
                  style="overflow: hidden; overflow-wrap: break-word; height: 28px;" value="{{cardList.name}}">
           <div class="list-cards"></div>
           <div class="list-cards u-fancy-scrollbar u-clearfix js-list-cards js-sortable ui-sortable">
-            <a class="list-card js-member-droppable ui-droppable" href="#"
-               *ngFor="let cardsAtCardList of mapOfCardsAtThisBoard?.get(cardList.id)">
+            <div class="list-card js-member-droppable ui-droppable" *ngFor="let cardsAtCardList of mapOfCardsAtThisBoard?.get(cardList.id)">
+<!--              <span calss="icon-sm icon-edit list-card-operation dark-hover js-open-quick-card-editor js-card-menu">X</span>-->
               <div class="list-card-details js-card-details">
-                CardlistID : {{cardList.id}}
-                {{cardsAtCardList.name}}
-                CardID : {{cardsAtCardList.id}}
+                <h4>{{cardsAtCardList.name}}</h4>
               </div>
-            </a>
+              <button class="btn btn-outline-info" (click)="showCardDetails(cardsAtCardList.id)">Szczegóły</button>
+              <button class="btn btn-outline-secondary" (click)="deleteCardById(cardsAtCardList.id)">Usuń</button>
+            </div>
+
           </div>
           <div class="card-composer-container">
-            <a class="open-card-composer card-templates-enabled" href="#">Dodaj kolejną kartę</a>
+            <div class="list-card">
+              <form [formGroup]="newCardForm" (ngSubmit)="addNewCardToCardListById(cardList.id)">
+                <div class="list-card-details u-clearfix">
+                <textarea formControlName="newCardName" class="list-card-composer-textarea js-card-title" dir="auto"
+                          placeholder="Wprowadź tytuł dla tej karty…"
+                          style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 54px;"></textarea>
+                </div>
+                <div class="list-add-controls">
+                  <button type="submit" class="btn btn-success">Dodaj kartę</button>
+                </div>
+              </form>
+
+            </div>
           </div>
         </div>
       </div>
