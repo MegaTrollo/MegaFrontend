@@ -34,26 +34,27 @@
   flex-grow: 1;
 }
 
-#board {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  white-space: nowrap;
-  margin-bottom: 8px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding-bottom: 8px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
+/*#board {*/
+/*  -webkit-user-select: none;*/
+/*  -moz-user-select: none;*/
+/*  -ms-user-select: none;*/
+/*  user-select: none;*/
+/*  white-space: nowrap;*/
+/*  margin-bottom: 8px;*/
+/*  overflow-x: auto;*/
+/*  overflow-y: hidden;*/
+/*  padding-bottom: 8px;*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  right: 0;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*}*/
 
 .u-fancy-scrollbar {
-  -webkit-overflow-scrolling: touch;
-  /* -webkit-transform: translateZ(0); */
+  /*-webkit-overflow-scrolling: touch;*/
+   /*-webkit-transform: translateZ(0);*/
+  /*display: inline-flex;*/
 }
 .list-wrapper:first-child {
   margin-left: 8px;
@@ -167,4 +168,18 @@ textarea.mod-list-name {
   transition: margin 85ms ease-in,height 85ms ease-in;
   overflow: hidden;
   margin: 4px 0 0;
+}
+
+.list-card {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(9,30,66,.25);
+  cursor: pointer;
+  display: block;
+  margin-bottom: 8px;
+  max-width: 300px;
+  min-height: 20px;
+  position: relative;
+  text-decoration: none;
+  z-index: 0;
 }
