@@ -17,7 +17,7 @@ export class ListOfBoardsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.listofBoardsService.getAllBoards().subscribe(value => {
+    this.listofBoardsService.getAllBoards(sessionStorage.getItem('accountId')).subscribe(value => {
       this.allBoards = value;
     }, error1 => {
       console.log(error1.error.message);
@@ -27,7 +27,7 @@ export class ListOfBoardsComponent implements OnInit {
   createTable(boardName: string) {
     this.newBoard = new Board();
     this.newBoard.name = boardName;
-    this.listofBoardsService.createNewBoard(this.newBoard).subscribe(value => {
+    this.listofBoardsService.createNewBoard(this.newBoard, sessionStorage.getItem('accountId')).subscribe(value => {
     this.toastr.success('Utworzono nową tablicę!');
     this.ngOnInit();
     }, error1 => {

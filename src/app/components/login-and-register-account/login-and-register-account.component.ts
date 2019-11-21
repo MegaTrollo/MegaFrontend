@@ -45,8 +45,9 @@ export class LoginAndRegisterAccountComponent implements OnInit {
         this.authorizationModel = value as AuthorizationModel;
         sessionStorage.setItem('jwtToken', this.authorizationModel.jwtToken);
         sessionStorage.setItem('accountId', this.authorizationModel.accountId);
-        sessionStorage.setItem('role', this.authorizationModel.role);
+        sessionStorage.setItem('roleId', this.authorizationModel.roleId);
         this.router.navigate(['/list-of-boards']);
+        this.toastr.success('Zalogowano pomyślnie!');
       }, error1 => {
         this.toastr.error(error1.error.message);
       });
