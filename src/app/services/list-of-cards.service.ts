@@ -22,4 +22,12 @@ export class ListOfCardsService {
   deleteCardByCardId(cardId: any) {
     return this.http.delete(`${environment.localhostBackendUrl}/api/card/deleteCard/` + cardId);
   }
+
+  getCardById(cardId: string) {
+    return this.http.get<Card>(`${environment.localhostBackendUrl}/api/card/getCardById/` + cardId);
+  }
+
+  changeCardDescById(cardId: string, description: string){
+    return this.http.post(`${environment.localhostBackendUrl}/api/card/changeDesc/` + cardId + `/` + description, null );
+  }
 }

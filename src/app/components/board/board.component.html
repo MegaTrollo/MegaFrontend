@@ -14,11 +14,10 @@
           <div class="list-cards"></div>
           <div class="list-cards u-fancy-scrollbar u-clearfix js-list-cards js-sortable ui-sortable">
             <div class="list-card js-member-droppable ui-droppable" *ngFor="let cardsAtCardList of mapOfCardsAtThisBoard?.get(cardList.id)">
-<!--              <span calss="icon-sm icon-edit list-card-operation dark-hover js-open-quick-card-editor js-card-menu">X</span>-->
               <div class="list-card-details js-card-details">
                 <h4>{{cardsAtCardList.name}}</h4>
               </div>
-              <button class="btn btn-outline-info" (click)="showCardDetails(cardsAtCardList.id)">Szczegóły</button>
+              <button class="btn btn-outline-info" routerLink="/card-details/{{cardsAtCardList.id}}" >Szczegóły</button>
               <button class="btn btn-outline-secondary" (click)="deleteCardById(cardsAtCardList.id)">Usuń</button>
             </div>
 
@@ -54,5 +53,4 @@
 
   </div>
 </div>
-
 

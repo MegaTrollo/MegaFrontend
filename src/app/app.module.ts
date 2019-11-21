@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpHeaderInterceptor} from './HttpHeaderInterceptor';
 import {LoginAndRegisterAccountComponent} from './components/login-and-register-account/login-and-register-account.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CardDetailsComponent } from './components/card-details/card-details.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     ListOfBoardsComponent,
     BoardComponent,
     LoginAndRegisterAccountComponent,
+    CardDetailsComponent,
   ],
   imports: [
     BrowserModule,
