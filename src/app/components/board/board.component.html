@@ -10,13 +10,21 @@
   <div class="list-wrapper" *ngFor="let cardList of allCardLists">
     <div class="list">
       <div class="list-header">
-        <textarea class="mod-list-name"  spellcheck="false" dir="auto" maxlength="512" style="overflow: hidden; overflow-wrap: break-word; height: 28px;">{{cardList.name}}</textarea>
+        <input class="mod-list-name"  spellcheck="false" dir="auto" maxlength="512" style="overflow: hidden; overflow-wrap: break-word; height: 28px;" value="{{cardList.name}}">
         <div class="list-cards"></div>
         <div class="card-composer-container">
           <a class="open-card-composer card-templates-enabled" href="#">Dodaj kolejną kartę</a>
         </div>
       </div>
     </div>
+  </div>
+  <div class="js-add-list list-wrapper mod-add">
+    <form [formGroup]="newListOfCardsNameForm" (ngSubmit)="addNewListOfCards()">
+      <input class="list-name-input" type="text" formControlName="newListOfCardsName" placeholder="Wprowadź tytuł listy" autocomplete="off" maxlength="512">
+      <div class="list-add-controls">
+        <button type="submit"  class="btn btn-success">Dodaj listę</button>
+      </div>
+    </form>
   </div>
 
 </div>

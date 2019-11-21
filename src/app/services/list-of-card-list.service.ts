@@ -12,7 +12,10 @@ export class ListOfCardListService {
   }
 
   getAllCardListByBoardId(boardId: string) {
-    return this.http.get<CardList[]>(`${environment.localhostBackendUrl}/api/card/getAllCardListByBoardId/` + boardId);
+    return this.http.get<CardList[]>(`${environment.localhostBackendUrl}/api/cardList/getAllCardListByBoardId/` + boardId);
   }
 
+  addListOfCardsByBoardId( boardId: string, listOfCardsToAdd: CardList) {
+    return this.http.post(`${environment.localhostBackendUrl}/api/cardList/addListCard/` + boardId, listOfCardsToAdd);
+  }
 }
