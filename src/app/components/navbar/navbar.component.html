@@ -1,7 +1,14 @@
 <nav class="navbar text-white bg-primary">
 
   <a class="navbar-nav">
-    <a *ngIf="jwtToken != null" style="color:white; cursor: pointer" routerLink="/list-of-boards"> Tablice </a>
+    <div>
+      <span>
+        <a *ngIf="jwtToken != null" style="color:white; cursor: pointer" routerLink="/list-of-boards"> Tablice </a>
+      </span>
+      <span>
+        <a *ngIf="jwtToken != null" style="color:white; cursor: pointer; margin-left: 0.3rem" routerLink="/list-of-archived-boards"> Zarchiwizowane tablice </a>
+      </span>
+    </div>
   </a>
 
   <div>
@@ -11,7 +18,8 @@
 
   <div id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li *ngIf="jwtToken == null" class="nav-item text-white active" style="cursor: pointer" routerLink="/login-register-account">
+      <li *ngIf="jwtToken == null" class="nav-item text-white active" style="cursor: pointer"
+          routerLink="/login-register-account">
         Zarejestruj się / Zaloguj się
       </li>
       <li *ngIf="jwtToken != null" class="nav-item text-white active" style="cursor: pointer;" (click)="logout()">

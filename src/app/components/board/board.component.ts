@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {CardList} from '../../models/CardList';
 import {ListOfCardListService} from '../../services/list-of-card-list.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Board} from '../../models/Board';
-import {ListofBoardsService} from '../../services/listof-boards.service';
+import {ListOfBoardsService} from '../../services/list-of-boards.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {Card} from '../../models/Card';
@@ -18,15 +18,15 @@ export class BoardComponent implements OnInit {
 
   constructor(
     private listOfCardListService: ListOfCardListService,
-    private listOfBoardsService: ListofBoardsService,
+    private listOfBoardsService: ListOfBoardsService,
     private listOfCardsService: ListOfCardsService,
     private route: ActivatedRoute,
+    private router: Router,
     private toastr: ToastrService,
   ) {
   }
 
   allCardLists: CardList[];
-  tempCardsList: Card[];
   boardId: string;
   thisBoard: Board;
   boardName = '';
@@ -92,17 +92,13 @@ export class BoardComponent implements OnInit {
   }
 
   addNewCardToCardListById(cardListId: number) {
-    let tempCard = new Card();
+    const tempCard = new Card();
     tempCard.name = this.newCardForm.value.newCardName;
     this.listOfCardsService.addCardByCardListId(cardListId, tempCard).subscribe(value => {
       this.toastr.success('Dodano nową kartę');
       this.ngOnInit();
       this.newCardForm.reset();
     });
-  }
-
-  showCardDetails(cardId: any) {
-    console.log('Show details: ' + cardId);
   }
 
   deleteCardById(cardId: any) {
@@ -112,6 +108,33 @@ export class BoardComponent implements OnInit {
       this.toastr.success('Usunięto kartę');
       this.ngOnInit();
       this.newCardForm.reset();
+    });
+  }
+
+  archiveBoard() {
+    this.listOfBoardsService.changeArchiveBoardStatus(this.boardId, true).subscribe(() => {
+      this.toastr.success('Zarchiwizowano tablicę!');
+      this.router.navigate(['list-of-boards']);
+    }, error1 => console.log(error1.error.message));
+  }
+
+  deleteBoard() {
+    this.listOfBoardsService.deleteBoardByBoardId(this.boardId).subscribe(() => {
+      this.toastr.success('Usunięto tablicę!');
+      this.router.navigate(['list-of-boards']);
+      this.ngOnInit();
+    }, error1 => {
+      console.log(error1.error.message);
+    });
+  }
+
+  unarchiveBoard() {
+    this.listOfBoardsService.changeArchiveBoardStatus(this.boardId, false).subscribe(() => {
+      this.toastr.success('Odarchiwizowano tablicę!');
+      this.router.navigate(['list-of-boards']);
+      this.ngOnInit();
+    }, error1 => {
+      console.log(error1.error.message);
     });
   }
 }
