@@ -11,20 +11,20 @@ export class ListofBoardsService {
   constructor(private http: HttpClient) {
   }
 
-  getAllBoards() {
-    return this.http.get<Board[]>(`${environment.localhostBackendUrl}/api/table/all`);
+  getAllBoards(accountId: string) {
+    return this.http.get<Board[]>(`${environment.backendUrl}/api/table/allbyUserId/` + accountId);
   }
 
-  createNewBoard(newBoard: Board) {
-    return this.http.post(`${environment.localhostBackendUrl}/api/table/add`, newBoard);
+  createNewBoard(newBoard: Board, accountId: string) {
+    return this.http.post(`${environment.backendUrl}/api/table/add/` + accountId, newBoard);
   }
 
   getBoardById(boardId: string) {
-    return this.http.get<Board>(`${environment.localhostBackendUrl}/api/table/` + boardId);
+    return this.http.get<Board>(`${environment.backendUrl}/api/table/` + boardId);
   }
 
   changeBoardNameById(boardId: string, newBoardName: string) {
-    return this.http.post(`${environment.localhostBackendUrl}/api/table/rename/${boardId}/${newBoardName}`, null);
+    return this.http.post(`${environment.backendUrl}/api/table/rename/${boardId}/${newBoardName}`, null);
   }
 
 }

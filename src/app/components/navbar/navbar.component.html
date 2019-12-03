@@ -1,7 +1,7 @@
 <nav class="navbar text-white bg-primary">
 
   <a class="navbar-nav">
-    <a style="color:white; cursor: pointer" routerLink="/list-of-boards"> Tablice </a>
+    <a *ngIf="jwtToken != null" style="color:white; cursor: pointer" routerLink="/list-of-boards"> Tablice </a>
   </a>
 
   <div>

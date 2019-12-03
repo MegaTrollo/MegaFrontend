@@ -73,7 +73,7 @@ export class BoardComponent implements OnInit {
     console.log(event.target.value);
     this.listOfBoardsService.changeBoardNameById(this.boardId, nameToSet).subscribe(
       value => {
-
+        this.toastr.success('Zmieniono nazwę tablicy!');
       }, error1 => {
         console.log(error1.error.message);
       });
@@ -94,7 +94,7 @@ export class BoardComponent implements OnInit {
   addNewCardToCardListById(cardListId: number) {
     let tempCard = new Card();
     tempCard.name = this.newCardForm.value.newCardName;
-    this.listOfCardsService.addCardByCardListId(cardListId, tempCard ).subscribe(value => {
+    this.listOfCardsService.addCardByCardListId(cardListId, tempCard).subscribe(value => {
       this.toastr.success('Dodano nową kartę');
       this.ngOnInit();
       this.newCardForm.reset();

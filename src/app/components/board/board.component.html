@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <div class="board-header">
   <div class="board-name-div">
     <input class="board-name-input" (focusout)="changeBoardName($event)" value="{{boardName}}">
@@ -17,8 +19,8 @@
               <div class="list-card-details js-card-details">
                 <h4>{{cardsAtCardList.name}}</h4>
               </div>
-              <button class="btn btn-outline-info" routerLink="/card-details/{{cardsAtCardList.id}}" >Szczegóły</button>
-              <button class="btn btn-outline-secondary" (click)="deleteCardById(cardsAtCardList.id)">Usuń</button>
+              <button class="btn btn-sm btn-outline-info" routerLink="/card-details/{{cardsAtCardList.id}}" >Szczegóły</button>
+              <img src="../../../assets/delete-icon.png" style="float:right; cursor: pointer" width="25" height="25" alt="Usuń" (click)="deleteCardById(cardsAtCardList.id)">
             </div>
 
           </div>

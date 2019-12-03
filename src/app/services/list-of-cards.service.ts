@@ -11,23 +11,23 @@ export class ListOfCardsService {
   constructor(private http: HttpClient) { }
 
   getAllCardsByCardListId(cardListId: number) {
-    return this.http.get<Card[]>(`${environment.localhostBackendUrl}/api/card/getAllCardByCardListId/` + cardListId);
+    return this.http.get<Card[]>(`${environment.backendUrl}/api/card/getAllCardByCardListId/` + cardListId);
   }
 
   addCardByCardListId(cardListId: number, cardToAdd: Card) {
-    return this.http.post(`${environment.localhostBackendUrl}/api/card/addCard/` + cardListId, cardToAdd);
+    return this.http.post(`${environment.backendUrl}/api/card/addCard/` + cardListId, cardToAdd);
   }
 
 
   deleteCardByCardId(cardId: any) {
-    return this.http.delete(`${environment.localhostBackendUrl}/api/card/deleteCard/` + cardId);
+    return this.http.delete(`${environment.backendUrl}/api/card/deleteCard/` + cardId);
   }
 
   getCardById(cardId: string) {
-    return this.http.get<Card>(`${environment.localhostBackendUrl}/api/card/getCardById/` + cardId);
+    return this.http.get<Card>(`${environment.backendUrl}/api/card/getCardById/` + cardId);
   }
 
   changeCardDescById(cardId: string, description: string){
-    return this.http.post(`${environment.localhostBackendUrl}/api/card/changeDesc/` + cardId + `/` + description, null );
+    return this.http.post(`${environment.backendUrl}/api/card/changeDesc/` + cardId + `/` + description, null );
   }
 }
