@@ -1,20 +1,21 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {RouterModule} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
-import {NavbarComponent} from './components/navbar/navbar.component';
-import {ListOfBoardsComponent} from './components/list-of-boards/list-of-boards.component';
-import {BoardComponent} from './components/board/board.component';
-import {ToastrModule} from 'ngx-toastr';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpHeaderInterceptor} from './HttpHeaderInterceptor';
-import {LoginAndRegisterAccountComponent} from './components/login-and-register-account/login-and-register-account.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CardDetailsComponent} from './components/card-details/card-details.component';
-import {ListOfArchivedBoardsComponent} from './components/list-of-archived-boards/list-of-archived-boards.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ListOfBoardsComponent } from './components/list-of-boards/list-of-boards.component';
+import { BoardComponent } from './components/board/board.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpHeaderInterceptor } from './HttpHeaderInterceptor';
+import { LoginAndRegisterAccountComponent } from './components/login-and-register-account/login-and-register-account.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CardDetailsComponent } from './components/card-details/card-details.component';
+import { ListOfArchivedBoardsComponent } from './components/list-of-archived-boards/list-of-archived-boards.component';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {ListOfArchivedBoardsComponent} from './components/list-of-archived-board
     LoginAndRegisterAccountComponent,
     CardDetailsComponent,
     ListOfArchivedBoardsComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,7 @@ import {ListOfArchivedBoardsComponent} from './components/list-of-archived-board
       progressBar: true
     })
   ],
-  providers: [{provide: HttpHeaderInterceptor, useClass: HttpHeaderInterceptor, multi: true}],
+  providers: [{ provide: HttpHeaderInterceptor, useClass: HttpHeaderInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
