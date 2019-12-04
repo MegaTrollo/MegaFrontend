@@ -34,4 +34,10 @@ export class CardDetailsComponent implements OnInit {
       this.toastr.success('Zmieniono opis');
     });
   }
+
+  archiveCard() {
+    this.listOfCardsService.archiveCard(this.cardId, 0).subscribe(() => {
+      this.toastr.success('Zarchiwizowano kartę!');
+    });
+  }
 }

@@ -1,5 +1,9 @@
 <app-navbar></app-navbar>
 
-<h2>{{card.name}}</h2>
-<textarea (focusout)="changeCardDescription($event)" >{{card.description}}</textarea>
-
+<div class="container">
+  <div>
+    <h2 style="display: inline-block;">{{card.name}}</h2>
+    <button class="btn btn-danger btn-sm" style="margin:0.2rem" (click)="archiveCard()">Archiwizuj kartę</button>
+  </div>
+  <textarea (focusout)="changeCardDescription($event)">{{card.description}}</textarea>
+</div>
