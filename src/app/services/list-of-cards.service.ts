@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Card} from '../models/Card';
@@ -8,7 +8,8 @@ import {Card} from '../models/Card';
 })
 export class ListOfCardsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAllCardsByCardListId(cardListId: number) {
     return this.http.get<Card[]>(`${environment.backendUrl}/api/card/getAllCardByCardListId/` + cardListId);
@@ -27,7 +28,11 @@ export class ListOfCardsService {
     return this.http.get<Card>(`${environment.backendUrl}/api/card/getCardById/` + cardId);
   }
 
-  changeCardDescById(cardId: string, description: string){
-    return this.http.post(`${environment.backendUrl}/api/card/changeDesc/` + cardId + `/` + description, null );
+  changeCardDescById(cardId: string, description: string) {
+    return this.http.post(`${environment.backendUrl}/api/card/changeDesc/` + cardId + `/` + description, null);
+  }
+
+  archiveCard(cardId: string, archiveStatus) {
+    return this.http.post(environment.backendUrl + '/api/card/changeArchiveMode/' + cardId + '/' + archiveStatus, '');
   }
 }
