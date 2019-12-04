@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+
+<div class="component-content">
+  <h2>Zarchiwizowane tablice:</h2>
+
+  <div class="boards">
+    <div routerLink="/board/{{board.id}}" *ngFor="let board of allBoards" class="one-board">
+      <div class="board-name">{{board.name}}</div>
+    </div>
+  </div>
+</div>

@@ -6,13 +6,17 @@ import {environment} from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ListofBoardsService {
+export class ListOfBoardsService {
 
   constructor(private http: HttpClient) {
   }
 
-  getAllBoards(accountId: string) {
-    return this.http.get<Board[]>(`${environment.backendUrl}/api/table/allbyUserId/` + accountId);
+  getAllVisibleBoards(accountId: string) {
+    return this.http.get<Board[]>(`${environment.backendUrl}/api/table/allVisiblebyUserId/` + accountId);
+  }
+
+  getAllArchivedBoards(accountId: string) {
+    return this.http.get<Board[]>(`${environment.backendUrl}/api/table/allArchivedbyUserId/` + accountId);
   }
 
   createNewBoard(newBoard: Board, accountId: string) {
@@ -27,4 +31,11 @@ export class ListofBoardsService {
     return this.http.post(`${environment.backendUrl}/api/table/rename/${boardId}/${newBoardName}`, null);
   }
 
+  changeArchiveBoardStatus(boardId: string, isArchived: boolean) {
+    return this.http.post(environment.backendUrl + '/api/table/changeArchiveStatus/' + boardId + '/' + isArchived, '');
+  }
+
+  deleteBoardByBoardId(boardId: string) {
+    return this.http.post(environment.backendUrl + '/api/table/delete/' + boardId, '');
+  }
 }

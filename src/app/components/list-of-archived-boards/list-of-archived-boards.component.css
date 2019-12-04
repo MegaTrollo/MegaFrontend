@@ -1,0 +1,42 @@
+.boards {
+  width: 70rem;
+}
+
+/******************************************/
+
+.create-board {
+  width: 12rem;
+  height: 6rem;
+  margin: 0.5rem;
+  border: 1px solid lightgrey;
+  border-radius: 0.5rem;
+  background-color: #f1f1f1;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.create-board:hover {
+  background-color: #eaeaea;
+}
+
+.create-board p {
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+/******************************************/
+
+.one-board {
+  width: 12rem;
+  height: 6rem;
+  margin: 0.5rem;
+  border: 1px solid lightgrey;
+  border-radius: 0.5rem;
+  display: inline-block;
+  cursor: pointer;
+  background-color: lightcyan;
+}
+
+.one-board .board-name {
+  padding: 0.5rem;
+}
