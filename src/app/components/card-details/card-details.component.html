@@ -5,5 +5,23 @@
     <h2 style="display: inline-block;">{{card.name}}</h2>
     <button class="btn btn-danger btn-sm" style="margin:0.2rem" (click)="archiveCard()">Archiwizuj kartę</button>
   </div>
+  <div>Opis:</div>
   <textarea (focusout)="changeCardDescription($event)">{{card.description}}</textarea>
+  <div>Komentarze:</div>
+  <div class="comments">
+    <div class="add-comment-field">
+      <textarea #newComment></textarea>
+      <button class="btn btn-secondary btn-sm" style="margin-left:0.2rem; margin-bottom: 1.5rem"
+              (click)="addComment(newComment.value)">
+        Dodaj komentarz
+      </button>
+    </div>
+    <br>
+    <div class="comment-field" *ngFor="let comment of comments">
+      <textarea (focusout)="changeComent($event, comment)">{{comment.comment}}</textarea>
+      <img src="../../../assets/delete-icon.png" style="cursor: pointer; margin-left:0.2rem; margin-bottom: 1.0rem "
+           width="25" height="25"
+           alt="Usuń" (click)="deleteComment(comment.id)">
+    </div>
+  </div>
 </div>
