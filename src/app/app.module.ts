@@ -15,7 +15,7 @@ import {LoginAndRegisterAccountComponent} from './components/login-and-register-
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CardDetailsComponent} from './components/card-details/card-details.component';
 import {ListOfArchivedBoardsComponent} from './components/list-of-archived-boards/list-of-archived-boards.component';
-
+import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -26,6 +26,7 @@ import {ListOfArchivedBoardsComponent} from './components/list-of-archived-board
     LoginAndRegisterAccountComponent,
     CardDetailsComponent,
     ListOfArchivedBoardsComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

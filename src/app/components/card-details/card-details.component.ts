@@ -1,10 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {ListOfCardsService} from '../../services/list-of-cards.service';
-import {Card} from '../../models/Card';
-import {ActivatedRoute} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
-import {CommentsService} from '../../services/comments.service';
-import {CommentObj} from '../../models/CommentObj';
+import { Component, OnInit } from '@angular/core';
+import { ListOfCardsService } from '../../services/list-of-cards.service';
+import { Card } from '../../models/Card';
+import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { CommentsService } from '../../services/comments.service';
+import { CommentObj } from '../../models/CommentObj';
+import { AttachmentService } from '../../services/attachment.service';
+import { HttpClient } from '@angular/common/http';
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-card-details',
@@ -17,13 +20,17 @@ export class CardDetailsComponent implements OnInit {
     private listOfCardsService: ListOfCardsService,
     private commentsService: CommentsService,
     private route: ActivatedRoute,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private http: HttpClient
   ) {
   }
   card: Card;
   comments: CommentObj[];
   cardId = '';
   accountId;
+  public uploader: FileUploader = new FileUploader({
+    isHTML5: true
+  });
 
   ngOnInit() {
     this.card = new Card();
@@ -50,7 +57,7 @@ export class CardDetailsComponent implements OnInit {
     });
   }
 
-  addComment(commentValue){
+  addComment(commentValue) {
     const comment = new CommentObj();
     comment.comment = commentValue;
     this.commentsService.addNewComment(this.cardId, this.accountId, comment).subscribe(value => {
@@ -74,4 +81,36 @@ export class CardDetailsComponent implements OnInit {
       this.ngOnInit();
     });
   }
+
+  submitAtachments() {
+
+      for (let i = 0; i < this.uploader.queue.length; i++) {
+        let fileItem = this.uploader.queue[i]._file;
+        if (fileItem.size > 10000000) {
+          alert('Każdy plik powinnien być mniejszy niż 10MB.');
+          return;
+        }
+      }
+      let data = new FormData();
+
+      for (let j = 0; j < this.uploader.queue.length; j++) {
+
+        let fileItem = this.uploader.queue[j]._file;
+        data.append('myFile', fileItem, fileItem.name);
+
+      }
+
+      data.append('card', new Blob([JSON.stringify(this.card)],
+        {
+          type: "application/json"
+        }), 'card');
+        console.log(this.card)
+      this.sendAtachments(data);
+      this.uploader.clearQueue();
+    }
+
+    sendAtachments(data: FormData) {
+      console.log(data);
+      this.http.post('http://localhost:8080/api/attachment/upload', data).subscribe(res => { console.log(res) });
+    }
 }
