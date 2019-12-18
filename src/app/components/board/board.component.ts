@@ -38,9 +38,11 @@ export class BoardComponent implements OnInit {
   newCardForm = new FormGroup({
     newCardName: new FormControl('')
   });
+  jwtToken: string;
 
 
   ngOnInit() {
+    this.jwtToken = sessionStorage.getItem('jwtToken');
     this.boardId = this.route.snapshot.paramMap.get('id');
     this.listOfBoardsService.getBoardById(this.boardId).subscribe(value => {
       this.thisBoard = value;

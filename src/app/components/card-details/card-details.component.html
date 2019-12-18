@@ -3,8 +3,8 @@
 <div class="container">
   <div>
     <h2 style="display: inline-block;">{{card.name}}</h2>
-    <button class="btn btn-danger btn-sm" style="margin:0.2rem" (click)="archiveCard()">Archiwizuj kartę</button>
-    <button class="btn btn-info btn-sm" style="margin:0.2rem" data-toggle="modal" data-target="#shareCard">Udostępnij kartę!</button>
+    <button *ngIf="jwtToken != undefined" class="btn btn-danger btn-sm" style="margin:0.2rem" (click)="archiveCard()">Archiwizuj kartę</button>
+    <button *ngIf="jwtToken != undefined" class="btn btn-info btn-sm" style="margin:0.2rem" data-toggle="modal" data-target="#shareCard">Udostępnij kartę!</button>
   </div>
 
   <hr>
@@ -44,7 +44,7 @@
   </div>
 <form>
   <br>
-  <input  type="file" ng2FileSelect accept=".png" [uploader]="uploader" multiple /><br />
+  <input *ngIf="jwtToken != undefined" type="file" ng2FileSelect accept=".png" [uploader]="uploader" multiple /><br />
   <br>
   <table>
     <thead>
@@ -64,7 +64,7 @@
     </tbody>
   </table>
 
-  <button (click)="submitAtachments()" >Dodaj plik</button>
+  <button *ngIf="jwtToken != undefined" (click)="submitAtachments()" >Dodaj plik</button>
 </form>
 
 
@@ -72,7 +72,7 @@
   <div class="comments">
     <div class="add-comment-field">
       <textarea #newComment></textarea>
-      <button class="btn btn-secondary btn-sm" style="margin-left:0.2rem; margin-bottom: 1.5rem"
+      <button *ngIf="jwtToken != undefined" class="btn btn-secondary btn-sm" style="margin-left:0.2rem; margin-bottom: 1.5rem"
               (click)="addComment(newComment.value)">
         Dodaj komentarz
       </button>
@@ -80,7 +80,7 @@
     <br>
     <div class="comment-field" *ngFor="let comment of comments">
       <textarea (focusout)="changeComent($event, comment)">{{comment.comment}}</textarea>
-      <img src="../../../assets/delete-icon.png" style="cursor: pointer; margin-left:0.2rem; margin-bottom: 1.0rem "
+      <img *ngIf="jwtToken != undefined" src="../../../assets/delete-icon.png" style="cursor: pointer; margin-left:0.2rem; margin-bottom: 1.0rem "
            width="25" height="25"
            alt="Usuń" (click)="deleteComment(comment.id)">
     </div>

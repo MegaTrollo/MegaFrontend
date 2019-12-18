@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ListOfCardsService} from '../../services/list-of-cards.service';
 import {Card} from '../../models/Card';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {CommentsService} from '../../services/comments.service';
 import {CommentObj} from '../../models/CommentObj';
@@ -20,8 +20,7 @@ export class CardDetailsComponent implements OnInit {
     private commentsService: CommentsService,
     private route: ActivatedRoute,
     private toastr: ToastrService,
-    private http: HttpClient,
-    private router: Router
+    private http: HttpClient
   ) {
   }
 
@@ -33,6 +32,7 @@ export class CardDetailsComponent implements OnInit {
     isHTML5: true
   });
   pathToCard: string;
+  jwtToken: string;
 
   ngOnInit() {
     this.card = new Card();
@@ -46,6 +46,7 @@ export class CardDetailsComponent implements OnInit {
     });
 
     this.pathToCard = window.location.href;
+    this.jwtToken = sessionStorage.getItem('jwtToken');
   }
 
   changeCardDescription(event) {

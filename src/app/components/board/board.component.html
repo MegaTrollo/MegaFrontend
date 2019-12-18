@@ -2,16 +2,17 @@
 
 <div class="board-header">
   <span class="board-name-div">
-    <input class="board-name-input" (focusout)="changeBoardName($event)" value="{{boardName}}">
+    <input *ngIf="jwtToken != undefined" class="board-name-input" (focusout)="changeBoardName($event)" value="{{boardName}}">
+    <input *ngIf="jwtToken == undefined" class="board-name-input" style="pointer-events: none" value="{{boardName}}">
   </span>
   <span *ngIf="thisBoard">
     <span *ngIf="thisBoard.archived == false">
-      <button class="btn btn-danger btn-sm" style="margin: 0.2rem" (click)="archiveBoard()">Archiwizuj tablicę</button>
+      <button *ngIf="jwtToken != undefined" class="btn btn-danger btn-sm" style="margin: 0.2rem" (click)="archiveBoard()">Archiwizuj tablicę</button>
     </span>
     <span *ngIf="thisBoard.archived == true">
-      <button class="btn btn-info btn-sm" style="margin: 0.2rem" (click)="unarchiveBoard()">Odarchiwizuj tablicę</button>
+      <button *ngIf="jwtToken != undefined" class="btn btn-info btn-sm" style="margin: 0.2rem" (click)="unarchiveBoard()">Odarchiwizuj tablicę</button>
     </span>
-    <button class="btn btn-danger btn-sm" style="margin: 0.2rem" (click)="deleteBoard()">Usuń tablicę</button>
+    <button *ngIf="jwtToken != undefined" class="btn btn-danger btn-sm" style="margin: 0.2rem" (click)="deleteBoard()">Usuń tablicę</button>
   </span>
 </div>
 <div class="board-canvas">
@@ -31,7 +32,7 @@
               </div>
               <button class="btn btn-sm btn-outline-info" routerLink="/card-details/{{cardsAtCardList.id}}">Szczegóły
               </button>
-              <img src="../../../assets/delete-icon.png" style="float:right; cursor: pointer" width="25" height="25"
+              <img *ngIf="jwtToken != undefined"  src="../../../assets/delete-icon.png" style="float:right; cursor: pointer" width="25" height="25"
                    alt="Usuń" (click)="deleteCardById(cardsAtCardList.id)">
             </div>
 
@@ -45,7 +46,7 @@
                           style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 54px;"></textarea>
                 </div>
                 <div class="list-add-controls">
-                  <button type="submit" class="btn btn-success">Dodaj kartę</button>
+                  <button *ngIf="jwtToken != undefined"  type="submit" class="btn btn-success">Dodaj kartę</button>
                 </div>
               </form>
 
@@ -60,7 +61,7 @@
                placeholder="Wprowadź tytuł listy"
                autocomplete="off" maxlength="512">
         <div class="list-add-controls">
-          <button type="submit" class="btn btn-success">Dodaj listę</button>
+          <button *ngIf="jwtToken != undefined" type="submit" class="btn btn-success">Dodaj listę</button>
         </div>
       </form>
     </div>
