@@ -31,7 +31,8 @@
   </div>
 
   <div>Opis:</div>
-  <textarea (focusout)="changeCardDescription($event)">{{card.description}}</textarea>
+  <textarea *ngIf="jwtToken != undefined" (focusout)="changeCardDescription($event)">{{card.description}}</textarea>
+  <textarea *ngIf="jwtToken == undefined" style="pointer-events: none">{{card.description}}</textarea>
   <div>
 
     <ul>

@@ -1,6 +1,6 @@
 import { Image } from './Image';
 export class Card {
-  id: number;
+  id: string;
   name: string;
   description: string;
   images: Array<Image>;

@@ -87,7 +87,7 @@ export class BoardComponent implements OnInit {
     this.listOfCardsToAdd = new CardList();
     this.listOfCardsToAdd.name = this.newListOfCardsNameForm.value.newListOfCardsName;
     this.listOfCardListService.addListOfCardsByBoardId(this.boardId, this.listOfCardsToAdd).subscribe(value => {
-      this.toastr.success('Utworzono nową tablicę!');
+      this.toastr.success('Utworzono nową listę!');
       this.ngOnInit();
       this.newListOfCardsNameForm.reset();
     });
