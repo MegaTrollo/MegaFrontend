@@ -31,7 +31,8 @@
   </div>
 
   <div>Opis:</div>
-  <textarea (focusout)="changeCardDescription($event)">{{card.description}}</textarea>
+  <textarea *ngIf="jwtToken != undefined" (focusout)="changeCardDescription($event)">{{card.description}}</textarea>
+  <textarea *ngIf="jwtToken == undefined" style="pointer-events: none">{{card.description}}</textarea>
   <div>
 
     <ul>
@@ -79,7 +80,8 @@
     </div>
     <br>
     <div class="comment-field" *ngFor="let comment of comments">
-      <textarea (focusout)="changeComent($event, comment)">{{comment.comment}}</textarea>
+      <textarea *ngIf="jwtToken != undefined" (focusout)="changeComent($event, comment)">{{comment.comment}}</textarea>
+      <textarea *ngIf="jwtToken == undefined" style="pointer-events: none">{{comment.comment}}</textarea>
       <img *ngIf="jwtToken != undefined" src="../../../assets/delete-icon.png" style="cursor: pointer; margin-left:0.2rem; margin-bottom: 1.0rem "
            width="25" height="25"
            alt="Usuń" (click)="deleteComment(comment.id)">

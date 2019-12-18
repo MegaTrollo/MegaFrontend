@@ -19,7 +19,6 @@ export class ListOfCardsService {
     return this.http.post(`${environment.backendUrl}/api/card/addCard/` + cardListId, cardToAdd);
   }
 
-
   deleteCardByCardId(cardId: any) {
     return this.http.delete(`${environment.backendUrl}/api/card/deleteCard/` + cardId);
   }

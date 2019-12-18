@@ -1,5 +1,5 @@
 export class Board {
-  id: number;
+  id: string;
   name: string;
   archived: string;
 }
