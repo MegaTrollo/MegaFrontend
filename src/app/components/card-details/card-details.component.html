@@ -4,6 +4,30 @@
   <div>
     <h2 style="display: inline-block;">{{card.name}}</h2>
     <button class="btn btn-danger btn-sm" style="margin:0.2rem" (click)="archiveCard()">Archiwizuj kartę</button>
+    <button class="btn btn-info btn-sm" style="margin:0.2rem" data-toggle="modal" data-target="#shareCard">Udostępnij kartę!</button>
+  </div>
+
+  <hr>
+
+  <!-- Modal -->
+  <div class="modal fade" id="shareCard" tabindex="-1" role="dialog" aria-labelledby="createBoardModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Skopiuj link do karty!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" #urlToCard class="form-control" style="pointer-events: none" value="{{pathToCard}}">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="copyPathToClipboard(urlToCard)">Skopiuj!</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div>Opis:</div>
