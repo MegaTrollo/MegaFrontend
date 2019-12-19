@@ -29,11 +29,12 @@
       </div>
     </div>
   </div>
+
   <div>Etykiety: </div>
   <div class="label-container" >
-    <div *ngFor="let label of card.labels" class="label" [ngStyle]="{'background-color': label.color}" >
+    <a *ngFor="let label of card.labels" class="label" [ngStyle]="{'background-color': label.color}" routerLink="/edit-label/{{cardId}}/{{label.id}}">
       {{ label.title }}
-    </div>
+    </a>
     <a *ngIf="jwtToken != undefined" routerLink="/new-label/{{card.id}}">
       <div class="label" [ngStyle]="{'background-color': 'grey'}">
         <h4>+</h4>

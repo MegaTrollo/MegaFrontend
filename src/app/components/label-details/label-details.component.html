@@ -3,7 +3,7 @@
 <div class="container">
 
   <h2>Tytuł etykiety</h2>
-  <input #labelTitle>
+  <input #labelNamee value="{{labelName}}">
 
   <H2>Wybierz Kolor</H2>
   <select matNativeControl required #labelColor>
@@ -15,5 +15,6 @@
   </select>
   <br>
   <br>
-  <button class="btn btn-primary" (click)="addLabel(labelTitle.value, labelColor.value)">Zapisz</button>
+  <button *ngIf="jwtToken != undefined" class="btn btn-primary" (click)="editLabel(labelNamee.value, labelColor.value)">Edytuj</button>
+  <button *ngIf="jwtToken != undefined" class="btn btn-danger" (click)="deleteLabel()">Usuń</button>
 </div>
