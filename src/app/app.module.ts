@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {ListOfBoardsComponent} from './components/list-of-boards/list-of-boards.component';
 import {BoardComponent} from './components/board/board.component';
@@ -16,6 +16,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CardDetailsComponent} from './components/card-details/card-details.component';
 import {ListOfArchivedBoardsComponent} from './components/list-of-archived-boards/list-of-archived-boards.component';
 import { FileSelectDirective } from 'ng2-file-upload';
+import { NewLabelComponent } from './components/new-label/new-label.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { FileSelectDirective } from 'ng2-file-upload';
     LoginAndRegisterAccountComponent,
     CardDetailsComponent,
     ListOfArchivedBoardsComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    NewLabelComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,7 @@ import { FileSelectDirective } from 'ng2-file-upload';
       progressBar: true
     })
   ],
-  providers: [{provide: HttpHeaderInterceptor, useClass: HttpHeaderInterceptor, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpHeaderInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

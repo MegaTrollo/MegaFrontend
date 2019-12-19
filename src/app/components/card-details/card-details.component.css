@@ -1,3 +1,26 @@
 .container{
-  margin: 2rem 5rem;
+  margin: 2rem auto;
+  width: 50%;
+  border: 1px lightgrey solid;
+}
+
+.label-container {
+  height: 40px;
+  /*overflow: auto;*/
+  position: relative;
+  display: block;
+  width: 100%;
+  /*background-color: red;*/
+}
+
+.label {
+  margin-left: 5px;
+  margin-top: 5px;
+  display: inline-block;
+  height: 30px;
+  float: left;
+  border-radius: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: white ;
 }

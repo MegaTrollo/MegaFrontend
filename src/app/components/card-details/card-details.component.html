@@ -3,11 +3,46 @@
 <div class="container">
   <div>
     <h2 style="display: inline-block;">{{card.name}}</h2>
-    <button class="btn btn-danger btn-sm" style="margin:0.2rem" (click)="archiveCard()">Archiwizuj kartę</button>
+    <button *ngIf="jwtToken != undefined" class="btn btn-danger btn-sm" style="margin:0.2rem" (click)="archiveCard()">Archiwizuj kartę</button>
+    <button *ngIf="jwtToken != undefined" class="btn btn-info btn-sm" style="margin:0.2rem" data-toggle="modal" data-target="#shareCard">Udostępnij kartę!</button>
   </div>
 
+  <hr>
+
+  <!-- Modal -->
+  <div class="modal fade" id="shareCard" tabindex="-1" role="dialog" aria-labelledby="createBoardModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Skopiuj link do karty!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" #urlToCard class="form-control" style="pointer-events: none" value="{{pathToCard}}">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="copyPathToClipboard(urlToCard)">Skopiuj!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>Etykiety: </div>
+  <div class="label-container" >
+    <div *ngFor="let label of card.labels" class="label" [ngStyle]="{'background-color': label.color}" >
+      {{ label.title }}
+    </div>
+    <a *ngIf="jwtToken != undefined" routerLink="/new-label/{{card.id}}">
+      <div class="label" [ngStyle]="{'background-color': 'grey'}">
+        <h4>+</h4>
+      </div>
+    </a>
+  </div>
   <div>Opis:</div>
-  <textarea (focusout)="changeCardDescription($event)">{{card.description}}</textarea>
+  <textarea *ngIf="jwtToken != undefined" (focusout)="changeCardDescription($event)">{{card.description}}</textarea>
+  <textarea *ngIf="jwtToken == undefined" style="pointer-events: none">{{card.description}}</textarea>
   <div>
 
     <ul>
@@ -20,7 +55,7 @@
   </div>
 <form>
   <br>
-  <input  type="file" ng2FileSelect accept=".png" [uploader]="uploader" multiple /><br />
+  <input *ngIf="jwtToken != undefined" type="file" ng2FileSelect accept=".png" [uploader]="uploader" multiple /><br />
   <br>
   <table>
     <thead>
@@ -40,7 +75,7 @@
     </tbody>
   </table>
 
-  <button (click)="submitAtachments()" >Dodaj plik</button>
+  <button *ngIf="jwtToken != undefined" (click)="submitAtachments()">Dodaj plik</button>
 </form>
 
 
@@ -48,15 +83,16 @@
   <div class="comments">
     <div class="add-comment-field">
       <textarea #newComment></textarea>
-      <button class="btn btn-secondary btn-sm" style="margin-left:0.2rem; margin-bottom: 1.5rem"
+      <button *ngIf="jwtToken != undefined" class="btn btn-secondary btn-sm" style="margin-left:0.2rem; margin-bottom: 1.5rem"
               (click)="addComment(newComment.value)">
         Dodaj komentarz
       </button>
     </div>
     <br>
     <div class="comment-field" *ngFor="let comment of comments">
-      <textarea (focusout)="changeComent($event, comment)">{{comment.comment}}</textarea>
-      <img src="../../../assets/delete-icon.png" style="cursor: pointer; margin-left:0.2rem; margin-bottom: 1.0rem "
+      <textarea *ngIf="jwtToken == undefined" style="pointer-events: none">{{comment.comment}}</textarea>
+      <textarea *ngIf="jwtToken != undefined" (focusout)="changeComent($event, comment)">{{comment.comment}}</textarea>
+      <img *ngIf="jwtToken != undefined" src="../../../assets/delete-icon.png" style="cursor: pointer; margin-left:0.2rem; margin-bottom: 1.0rem "
            width="25" height="25"
            alt="Usuń" (click)="deleteComment(comment.id)">
     </div>
