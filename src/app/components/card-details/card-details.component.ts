@@ -118,6 +118,7 @@ export class CardDetailsComponent implements OnInit {
     console.log(data);
     this.http.post('http://localhost:8080/api/attachment/upload', data).subscribe(res => {
       console.log(res);
+      this.ngOnInit();
     });
   }
 

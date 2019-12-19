@@ -34,7 +34,7 @@
     <div *ngFor="let label of card.labels" class="label" [ngStyle]="{'background-color': label.color}" >
       {{ label.title }}
     </div>
-    <a routerLink="/new-label/{{card.id}}">
+    <a *ngIf="jwtToken != undefined" routerLink="/new-label/{{card.id}}">
       <div class="label" [ngStyle]="{'background-color': 'grey'}">
         <h4>+</h4>
       </div>
@@ -75,7 +75,7 @@
     </tbody>
   </table>
 
-  <button *ngIf="jwtToken != undefined" (click)="submitAtachments()" >Dodaj plik</button>
+  <button *ngIf="jwtToken != undefined" (click)="submitAtachments()">Dodaj plik</button>
 </form>
 
 
@@ -90,7 +90,8 @@
     </div>
     <br>
     <div class="comment-field" *ngFor="let comment of comments">
-      <textarea (focusout)="changeComent($event, comment)">{{comment.comment}}</textarea>
+      <textarea *ngIf="jwtToken == undefined" style="pointer-events: none">{{comment.comment}}</textarea>
+      <textarea *ngIf="jwtToken != undefined" (focusout)="changeComent($event, comment)">{{comment.comment}}</textarea>
       <img *ngIf="jwtToken != undefined" src="../../../assets/delete-icon.png" style="cursor: pointer; margin-left:0.2rem; margin-bottom: 1.0rem "
            width="25" height="25"
            alt="Usuń" (click)="deleteComment(comment.id)">
