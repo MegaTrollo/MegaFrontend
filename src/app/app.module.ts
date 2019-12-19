@@ -17,6 +17,7 @@ import {CardDetailsComponent} from './components/card-details/card-details.compo
 import {ListOfArchivedBoardsComponent} from './components/list-of-archived-boards/list-of-archived-boards.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { NewLabelComponent } from './components/new-label/new-label.component';
+import { LabelDetailsComponent } from './components/label-details/label-details.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NewLabelComponent } from './components/new-label/new-label.component';
     CardDetailsComponent,
     ListOfArchivedBoardsComponent,
     FileSelectDirective,
-    NewLabelComponent
+    NewLabelComponent,
+    LabelDetailsComponent
   ],
   imports: [
     BrowserModule,
