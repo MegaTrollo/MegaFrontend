@@ -15,7 +15,8 @@
   margin: 0;
   padding: 0 12px;
 }
-.mod-list-name{
+
+.mod-list-name {
   display: inline;
   background-color: #ebecf0;
   border: 0;
@@ -29,6 +30,7 @@
 .board-canvas {
   background: linear-gradient(180deg, hsla(0, 0%, 100%, .24) 0, hsla(0, 0%, 100%, .24) 48px, hsla(0, 0%, 100%, 0) 80px, hsla(0, 0%, 100%, 0));
 }
+
 .board-canvas {
   position: relative;
   flex-grow: 1;
@@ -39,6 +41,7 @@
   /* -webkit-transform: translateZ(0);*/
   display: flex;
 }
+
 .list-wrapper:first-child {
   margin-left: 8px;
 }
@@ -96,6 +99,7 @@ textarea.mod-list-name {
   z-index: 1;
   min-height: 0;
 }
+
 .card-composer-container {
   min-height: 38px;
   max-height: 300px;
@@ -124,6 +128,7 @@ textarea.mod-list-name {
   -ms-user-select: none;
   user-select: none;
 }
+
 .list-name-input {
   background: #fff;
   border: none;
@@ -136,18 +141,18 @@ textarea.mod-list-name {
 }
 
 
-
 .mod-add {
   background-color: #ebecf0;
   border-radius: 3px;
   height: auto;
   min-height: 32px;
   padding: 4px;
-  transition: background 85ms ease-in,opacity 40ms ease-in,border-color 85ms ease-in;
+  transition: background 85ms ease-in, opacity 40ms ease-in, border-color 85ms ease-in;
 }
+
 .list-add-controls {
   height: 40px;
-  transition: margin 85ms ease-in,height 85ms ease-in;
+  transition: margin 85ms ease-in, height 85ms ease-in;
   overflow: hidden;
   margin: 4px 0 0;
 }
@@ -155,7 +160,7 @@ textarea.mod-list-name {
 .list-card {
   background-color: #fff;
   border-radius: 3px;
-  box-shadow: 0 1px 0 rgba(9,30,66,.25);
+  box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
   /*cursor: pointer;*/
   display: block;
   margin-bottom: 8px;
@@ -217,4 +222,25 @@ textarea.list-card-composer-textarea {
   text-align: center;
   text-decoration: none;
   vertical-align: bottom;
+}
+
+.label-container {
+  height: 40px;
+  /*overflow: auto;*/
+  position: relative;
+  display: block;
+  width: 100%;
+  /*background-color: red;*/
+}
+
+.label {
+  margin-left: 5px;
+  margin-top: 5px;
+  display: inline-block;
+  height: 25px;
+  float: left;
+  border-radius: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: white ;
 }

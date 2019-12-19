@@ -27,6 +27,11 @@
           <div class="list-cards u-fancy-scrollbar u-clearfix js-list-cards js-sortable ui-sortable">
             <div class="list-card js-member-droppable ui-droppable"
                  *ngFor="let cardsAtCardList of mapOfCardsAtThisBoard?.get(cardList.id)">
+              <div class="label-container" >
+                <div *ngFor="let label of cardsAtCardList.labels" class="label" [ngStyle]="{'background-color': label.color}" >
+                  {{ label.title }}
+                </div>
+              </div>
               <div class="list-card-details js-card-details">
                 <h4>{{cardsAtCardList.name}}</h4>
               </div>
