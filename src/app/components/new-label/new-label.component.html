@@ -1,0 +1,18 @@
+<div class="container">
+
+
+  <h2>Tytuł etykiety</h2>
+  <input #labelTitle>
+
+  <H2>Wybierz Kolor</H2>
+  <select matNativeControl required #labelColor>
+    <option value="green">green</option>
+    <option value="red">red</option>
+    <option value="blue">blue</option>
+    <option value="aqua">aqua</option>
+    <option value="fuchsia">Fuchsia</option>
+  </select>
+<br>
+<br>
+  <button (click)="addLabel(labelTitle.value, labelColor.value)"> Zapisz</button>
+</div>

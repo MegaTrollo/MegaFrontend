@@ -16,6 +16,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CardDetailsComponent} from './components/card-details/card-details.component';
 import {ListOfArchivedBoardsComponent} from './components/list-of-archived-boards/list-of-archived-boards.component';
 import { FileSelectDirective } from 'ng2-file-upload';
+import { NewLabelComponent } from './components/new-label/new-label.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { FileSelectDirective } from 'ng2-file-upload';
     LoginAndRegisterAccountComponent,
     CardDetailsComponent,
     ListOfArchivedBoardsComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    NewLabelComponent
   ],
   imports: [
     BrowserModule,

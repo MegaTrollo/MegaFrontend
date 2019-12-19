@@ -5,6 +5,7 @@ import {BoardComponent} from './components/board/board.component';
 import {LoginAndRegisterAccountComponent} from './components/login-and-register-account/login-and-register-account.component';
 import {CardDetailsComponent} from './components/card-details/card-details.component';
 import {ListOfArchivedBoardsComponent} from './components/list-of-archived-boards/list-of-archived-boards.component';
+import {NewLabelComponent} from './components/new-label/new-label.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'board/:id', component: BoardComponent},
   {path: 'login-register-account', component: LoginAndRegisterAccountComponent},
   {path: 'card-details/:cardId', component: CardDetailsComponent},
+  {path: 'new-label/:cardId', component: NewLabelComponent},
 ];
 
 @NgModule({

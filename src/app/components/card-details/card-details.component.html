@@ -29,7 +29,17 @@
       </div>
     </div>
   </div>
-
+  <div>Etykiety: </div>
+  <div class="label-container" >
+    <div *ngFor="let label of card.labels" class="label" [ngStyle]="{'background-color': label.color}" >
+      {{ label.title }}
+    </div>
+    <a routerLink="/new-label/{{card.id}}">
+      <div class="label" [ngStyle]="{'background-color': 'grey'}">
+        <h4>+</h4>
+      </div>
+    </a>
+  </div>
   <div>Opis:</div>
   <textarea *ngIf="jwtToken != undefined" (focusout)="changeCardDescription($event)">{{card.description}}</textarea>
   <textarea *ngIf="jwtToken == undefined" style="pointer-events: none">{{card.description}}</textarea>
